@@ -32,7 +32,7 @@ You can see inside `aws.js` that I'm using following functions:
 - [describeDeployments](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/OpsWorks.html#describeDeployments-property) to check if there are any deployments running on a specific stack
 - [createDeployment](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/OpsWorks.html#createDeployment-property) to deploy a stack
 
-Finding the Stack and Application IDs was a bit tricky for me, I pretty much just went to the deployment page, and copied the IDs from the URL  ¯\_(ツ)_/¯
+Finding the Stack and Application IDs was a bit tricky for me, I pretty much just went to the deployment page, and copied the IDs from the URL  ¯\\_(ツ)\_/¯
 
 You will need to add your Amazon AWS Access Key Id and Secret Access Key to `.env`. You can find them on the [Security Credentials](https://console.aws.amazon.com/iam/home?region=us-east-1#/security_credentials) page.
 
@@ -40,6 +40,8 @@ You will need to add your Amazon AWS Access Key Id and Secret Access Key to `.en
 ### 4. Slack (optional)
 
 You can add a Slack token (see the [Slack legacy token generator](https://api.slack.com/custom-integrations/legacy-tokens)) and a channel ID (you can use Slack's [channels.list API method tester tool](https://api.slack.com/methods/channels.list/test) to find it) to get notified about deployments in your Slack group.
+
+![Running deployment](https://cdn.glitch.com/d1e6e429-cc0c-432d-8c23-2092bce7a350%2Fdeploy-button-slack-1-start-deploy.png?1557670793059)
 
 ## Suggestions and improvements
 
