@@ -1,3 +1,5 @@
+![View of the littleBits cloudBit with a notification showing server deployment in progress](https://cdn.glitch.com/d1e6e429-cc0c-432d-8c23-2092bce7a350%2Fdeploy-button-thumbnail-1-small.png?1557746045867)
+
 # Proof of concept: Physical AWS deployment button
 ## Made with littleBits cloudBit, AWS, and Glitch
 
