@@ -1,7 +1,8 @@
 const express = require( 'express' ),
       app = express(),
       littlebits = require(__dirname + '/littlebits.js'),
-      aws = require(__dirname + '/aws.js');
+      aws = require(__dirname + '/aws.js'),
+      slack = require(__dirname + '/slack.js');
 
 littlebits.subscribeToCloudBit( function( err ){
   if ( err ){
@@ -21,6 +22,8 @@ app.post( '/on', function ( req, res ) {
       aws.runDeployment( function( err ){
         /* Check for errors, do whatever. */
       } );
+    } else {
+        slack.postSlackMessage( process.env.SLACK_CHANNEL_ID, 'Deployment in progress.' );      
     }
   } );
 } );    

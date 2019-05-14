@@ -32,14 +32,6 @@ module.exports = {
         
         console.log( { isDeploying } );
         
-        if ( isDeploying ){
-          slack.postSlackMessage( process.env.SLACK_CHANNEL_ID, 'Deployment in progress.', function( err ){
-            if ( err ){
-              console.log( err );
-            }
-          } );
-        }
-        
         if ( cb ){
           cb( isDeploying );
         }
@@ -47,6 +39,8 @@ module.exports = {
     });
   },
   runDeployment: function( cb ){
+    var helper = this;
+
     opsworks.createDeployment( {
       Command: {
         Name: 'deploy'
@@ -60,13 +54,29 @@ module.exports = {
         slack.postSlackMessage( process.env.SLACK_CHANNEL_ID, 'There was an error while running deployment.' );
       } else {
         console.log( 'running deployment...', data );
+
+        helper.notifyWhenDeploymentIsFinished();
+
         slack.postSlackMessage( process.env.SLACK_CHANNEL_ID, 'Deploying stage.', function( err ){
           console.log( err );
-        } );          
+        } );
       }    
       if ( cb ){
         cb( err, data );
       }
     });
-  }  
+  },
+  notifyWhenDeploymentIsFinished: function( cb ){
+    var helper = this;
+    helper.checkDeploymentStatus( function( isDeploying ) {
+      console.log( `checking deployment status: ${isDeploying}` );
+      if ( isDeploying ){
+        setTimeout( function(){
+          helper.notifyWhenDeploymentIsFinished();
+        }, 5000 );
+      } else {
+        slack.postSlackMessage( process.env.SLACK_CHANNEL_ID, 'Deployment is finished.' );        
+      }
+    });
+  }
 };
