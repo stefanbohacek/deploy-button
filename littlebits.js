@@ -10,6 +10,7 @@ module.exports = {
         publisher_events: ['amplitude:delta:ignite']
       }, function( err, result ){
         if ( err ){
+          console.log( 'unable to subscribe to "on" events...' );
           console.log( err );
         }
         else{
