@@ -30,8 +30,6 @@ module.exports = {
           }
         } );
         
-        console.log( { isDeploying } );
-        
         if ( cb ){
           cb( isDeploying );
         }
