@@ -47,6 +47,8 @@ You can add a Slack token (see the [Slack legacy token generator](https://api.sl
 
 ## Suggestions and improvements
 
+**Note: If you're not able to subscribe to your device, or are getting server errors, be sure to check if the [littleBits Cloud Control](http://control.littlebitscloud.cc/) is working.**
+
 - When a button is pressed, start a five second timer. If the button is pressed during these five seconds, cancel timer. When the five seconds are up, then run the deployment.
 - Same as above, but use the [Slack Dialog API](https://api.slack.com/dialogs) so that you can cancel deployment inside Slack. (You can add [Botkit](https://glitch.com/botkit) to your project to make working with Slack API easier.)
 - Add [more littleBits modules](https://littlebits.com/pages/search-results-page).
